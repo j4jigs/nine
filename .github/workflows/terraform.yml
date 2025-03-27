@@ -32,6 +32,10 @@ jobs:
         uses: terraform-linters/setup-tflint@v4
         with:
           tflint_version: latest
+      - name: Run tflint
+        run: |
+          tflint --init
+          tflint
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
