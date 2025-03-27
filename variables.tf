@@ -7,7 +7,7 @@ variable "s3_bucket_name" {
 }
 
 variable "ami" {
-  default = "ami-071226ecf16aa7d96"  # Amazon Linux 2 (us-east-1)
+  default = "ami-071226ecf16aa7d96" # Amazon Linux 2 (us-east-1)
 }
 
 variable "instance_type" {
