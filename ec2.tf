@@ -38,7 +38,7 @@ resource "aws_instance" "public_ec2" {
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  key_name               = aws_key_pair.my_key.key_name
+  #  key_name               = aws_key_pair.my_key.key_name
   associate_public_ip_address = true
 
   user_data = <<-EOF
