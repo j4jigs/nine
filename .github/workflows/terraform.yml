@@ -1,5 +1,4 @@
-name: Terraform CA
-
+name: Terraform CAN
 on:
   push:
     branches: [ main ]
