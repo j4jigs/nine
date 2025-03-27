@@ -43,8 +43,7 @@ jobs:
           tflint --init
           tflint
 
-      - 
-        
+             
       - name: Terraform Plan
         run: terraform plan
 
