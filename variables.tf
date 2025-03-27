@@ -3,10 +3,10 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "s3_bucket_name" {
-  type    = string
-  default = "github-cicd-demo-bucket-123456"
-}
+#variable "s3_bucket_name" {
+#  type    = string
+#  default = "github-cicd-demo-bucket-123456"
+#}
 
 variable "ami" {
   type    = string
