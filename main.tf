@@ -73,7 +73,7 @@ resource "aws_internet_gateway" "igw" {
 
 # 5. Elastic IP for NAT Gateway
 resource "aws_eip" "nat" {
-  vpc = true
+  domain = "vpc"
 }
 
 # 6. NAT Gateway
