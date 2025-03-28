@@ -1,4 +1,4 @@
-name: Terraform CAN
+name: Terraform Happy Friday
 on:
   push:
     branches: [ main ]
