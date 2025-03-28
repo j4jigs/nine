@@ -54,7 +54,7 @@ resource "aws_kms_key" "cloudwatch_logs" {
 }
 
 resource "aws_cloudwatch_log_group" "secure_log_group" {
-  name              = "/app/my-secure-logs"
+  name              = "/app/my-super-secure-logs"
   retention_in_days = 7
   kms_key_id        = aws_kms_key.cloudwatch_logs.arn # 👈 Use CMK here
 
