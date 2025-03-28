@@ -48,16 +48,6 @@ resource "aws_security_group" "rds_sg" {
   }
 }
 
-# 2. Create DB Subnet Group (for RDS in private subnets)
-resource "aws_db_subnet_group" "rds_subnet_group" {
-  name       = "rds-subnet-group"
-  subnet_ids = [aws_subnet.private1.id, aws_subnet.private2.id]
-
-  tags = {
-    Name = "RDS Private Subnet Group"
-  }
-}
-
 # 3. Create RDS Instance
 resource "aws_db_instance" "mysql" {
   identifier              = "my-mysql-db"
