@@ -37,10 +37,11 @@ resource "aws_security_group" "rds_sg" {
   }
 
   egress {
+    description = "Allow SSH from admin IP"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["49.249.107.86/32"]
   }
 
   tags = {

@@ -23,6 +23,15 @@ resource "aws_instance" "my_ec2" {
   ami           = var.ami
   instance_type = var.instance_type
 
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 20
+    encrypted   = true
+  }
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "required" # ✅ Enforce IMDSv2
+  }
   tags = {
     Name = "GitHub-EC2"
   }
@@ -44,7 +53,7 @@ resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   availability_zone       = "us-east-1a"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
 
   tags = {
     Name = "public-subnet"

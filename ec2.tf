@@ -17,14 +17,15 @@ resource "aws_security_group" "ec2_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["49.249.107.86/32"]
   }
 
   egress {
+    description = "Allow SSH from admin IP"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["49.249.107.86/32"]
   }
 
   tags = {
@@ -40,6 +41,17 @@ resource "aws_instance" "public_ec2" {
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   #  key_name               = aws_key_pair.my_key.key_name
   associate_public_ip_address = true
+
+  metadata_options {
+    http_tokens   = "required" # Enforce IMDSv2
+    http_endpoint = "enabled"  # IMDS endpoint must be enabled
+  }
+
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 20
+    encrypted   = true
+  }
 
   user_data = <<-EOF
               #!/bin/bash
